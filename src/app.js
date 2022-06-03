@@ -1,9 +1,13 @@
 import express from 'express';
 
+import config from 'src/config';
+
 const app = express();
 
 app.get('/', (req, res) => {
   res.send('Hello there');
 });
 
-app.listen(8080, () => console.log(`Server is listening on pprt ${8080}`));
+app.listen(config.port, () =>
+  console.log(`Server is listening on port ${config.port}`)
+);
