@@ -1,3 +1,6 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -5,7 +8,6 @@ const Sequelize = require('sequelize');
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-// eslint-disable-next-line import/no-dynamic-require
 const config = require(`${__dirname}/../config/db.js`)[env];
 const db = {};
 
@@ -28,10 +30,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
+    const model = require(path.join(__dirname, file)).default(sequelize);
     db[model.name] = model;
   });
 
