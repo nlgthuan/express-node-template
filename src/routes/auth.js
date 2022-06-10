@@ -5,14 +5,15 @@ import userServices from 'src/services/user';
 
 const authRouter = express.Router();
 
-authRouter.post('/signup', async (req, res) => {
-  // validate req body, create DTO
-
+authRouter.post('/signup', async (req, res, next) => {
   const userDTO = req.body;
 
-  const user = await userServices.createUser(userDTO);
-
-  res.status(StatusCodes.CREATED).json(user);
+  try {
+    const user = await userServices.createUser(userDTO);
+    res.status(StatusCodes.CREATED).json(user);
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default authRouter;
