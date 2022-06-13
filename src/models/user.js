@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { DataTypes } from 'sequelize';
+
+import config from 'src/config';
 
 export default (sequelize) => {
   const User = sequelize.define(
@@ -44,6 +47,16 @@ export default (sequelize) => {
   User.prototype.setPassword = async function setPassword(rawPassword) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(rawPassword, saltRounds);
+  };
+
+  User.prototype.checkPassword = async function checkPassword(rawPassword) {
+    return bcrypt.compare(rawPassword, this.password);
+  };
+
+  User.prototype.generateAccessToken = function genAccessToken() {
+    return jwt.sign({ id: this.id, email: this.email }, config.jwtKey, {
+      expiresIn: 86400,
+    });
   };
 
   return User;

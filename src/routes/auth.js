@@ -16,4 +16,16 @@ authRouter.post('/signup', async (req, res, next) => {
   }
 });
 
+authRouter.post('/login', async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const accessToken = await userServices.loginWithEmail(email, password);
+
+    res.status(StatusCodes.OK).json({ accessToken });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default authRouter;
