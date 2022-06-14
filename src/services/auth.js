@@ -2,7 +2,7 @@ import { isNull } from 'lodash';
 
 import { User } from 'src/models';
 
-const createUser = async (userDTO) => {
+const signup = async (userDTO) => {
   const user = await User.create(userDTO);
 
   return user;
@@ -20,7 +20,7 @@ const loginWithEmail = async (email, password) => {
 };
 
 const userServices = {
-  createUser,
+  signup,
   loginWithEmail,
 };
 
