@@ -19,9 +19,9 @@ const loginWithEmail = async (email, password) => {
   return accessToken;
 };
 
-const userServices = {
+const authServices = {
   signup,
   loginWithEmail,
 };
 
-export default userServices;
+export default authServices;
