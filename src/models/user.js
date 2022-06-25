@@ -18,10 +18,6 @@ export default (sequelize) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [9, 64],
-          is: /\d/,
-        },
       },
     },
     {

@@ -1,6 +1,7 @@
 import { isNull } from 'lodash';
 
 import { User } from 'src/models';
+import { AuthenticationError } from 'src/utils/errors';
 
 const signup = async (userDTO) => {
   const user = await User.create(userDTO);
@@ -12,7 +13,7 @@ const loginWithEmail = async (email, password) => {
   const user = await User.findOne({ where: { email } });
 
   if (isNull(user) || !(await user.checkPassword(password))) {
-    throw new Error('Something went wrong');
+    throw new AuthenticationError();
   }
 
   const accessToken = await user.generateAccessToken();

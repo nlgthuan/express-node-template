@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 
@@ -7,6 +8,8 @@ import authRouter from 'src/routes/auth';
 import logger from 'src/utils/logger';
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   morgan('combined', {
