@@ -15,7 +15,13 @@
       {
         "root": ["."],
         "alias": {
-          "src": "./src"
+          "src": "./src",
+          "config": "./src/config",
+          "models": "./src/models",
+          "utils": "./src/utils",
+          "services": "./src/services",
+          "middlewares": "./src/middlewares",
+          "routes": "./src/routes"
         }
       }
     ]

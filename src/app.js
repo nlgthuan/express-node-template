@@ -2,10 +2,10 @@ import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 
-import config from 'src/config';
-import errorHandler from 'src/middlewares/errorhandler';
-import authRouter from 'src/routes/auth';
-import logger from 'src/utils/logger';
+import config from 'config';
+import errorHandler from 'middlewares/errorhandler';
+import authRouter from 'routes/auth';
+import logger from 'utils/logger';
 
 const app = express();
 

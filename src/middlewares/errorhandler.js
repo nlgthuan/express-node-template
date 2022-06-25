@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import { ValidationError } from 'sequelize';
 
-import { ErrorWithStatusCode } from 'src/utils/errors';
-import logger from 'src/utils/logger';
+import { ErrorWithStatusCode } from 'utils/errors';
+import logger from 'utils/logger';
 
 const errorHandler = (err, req, res) => {
   logger.error(err.message);

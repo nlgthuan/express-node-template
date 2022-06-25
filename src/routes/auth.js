@@ -1,7 +1,7 @@
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import authServices from 'src/services/auth';
+import authServices from 'services/auth';
 
 const authRouter = express.Router();
 

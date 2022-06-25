@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { DataTypes } from 'sequelize';
 
-import config from 'src/config';
+import config from 'config';
 
 export default (sequelize) => {
   const User = sequelize.define(

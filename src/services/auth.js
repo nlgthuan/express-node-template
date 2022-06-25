@@ -1,7 +1,7 @@
 import { isNull } from 'lodash';
 
-import { User } from 'src/models';
-import { AuthenticationError } from 'src/utils/errors';
+import { User } from 'models';
+import { AuthenticationError } from 'utils/errors';
 
 const signup = async (userDTO) => {
   const user = await User.create(userDTO);
