@@ -21,11 +21,6 @@ app.use(
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  logger.info('Hello theres');
-  res.send('Hello there');
-});
-
 app.use('/auth', authRouter);
 
 app.use(errorHandler);

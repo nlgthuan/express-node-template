@@ -4,20 +4,18 @@ import { ValidationError } from 'sequelize';
 import { ErrorWithStatusCode } from 'utils/errors';
 import logger from 'utils/logger';
 
-const errorHandler = (err, req, res) => {
+const errorHandler = (err, req, res, next) => {
   logger.error(err.message);
 
   if (err instanceof ValidationError) {
-    return res.status(StatusCodes.BAD_REQUEST).send(err.message);
+    return res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
   }
 
   if (err instanceof ErrorWithStatusCode) {
-    return res.status(err.statusCode).send(err.message);
+    return res.status(err.statusCode).json({ error: err.message });
   }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send('Internal server error!');
+  return next(err);
 };
 
 export default errorHandler;

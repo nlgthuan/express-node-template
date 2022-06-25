@@ -16,7 +16,9 @@ const isAuthenticated = async (req, res, next) => {
     req.user = await User.findByPk(userId);
     return next();
   } catch (err) {
-    return res.status(StatusCodes.UNAUTHORIZED).send('Invalid Credentials!');
+    return res.status(StatusCodes.UNAUTHORIZED).json({
+      error: 'Invalid Credentials!',
+    });
   }
 };
 
