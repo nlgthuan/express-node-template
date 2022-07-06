@@ -1,3 +1,4 @@
+import { isCelebrateError } from 'celebrate';
 import { StatusCodes } from 'http-status-codes';
 import { ValidationError } from 'sequelize';
 
@@ -13,6 +14,17 @@ const errorHandler = (err, req, res, next) => {
 
   if (err instanceof ErrorWithStatusCode) {
     return res.status(err.statusCode).json({ error: err.message });
+  }
+
+  if (isCelebrateError(err)) {
+    const { details } = err;
+    let message;
+
+    details.forEach((joiError) => {
+      message = joiError.details.map((x) => x.message).join('');
+    });
+
+    return res.status(StatusCodes.BAD_REQUEST).json({ error: message });
   }
 
   return next(err);

@@ -1,11 +1,12 @@
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 
+import userValidator from 'middlewares/validators/user-validator';
 import authServices from 'services/auth';
 
 const authRouter = express.Router();
 
-authRouter.post('/signup', async (req, res, next) => {
+authRouter.post('/signup', userValidator, async (req, res, next) => {
   const userDTO = req.body;
 
   try {
