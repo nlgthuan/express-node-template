@@ -9,7 +9,9 @@
       "routes/*": ["./src/routes/*"],
       "services/*": ["./src/services/*"],
       "utils/*": ["./src/utils/*"],
-      "middlewares/*": ["./src/middlewares/*"]
+      "middlewares/*": ["./src/middlewares/*"],
+      "queues/*": ["./src/queues/*"],
+      "constants/*": ["./src/constants/*"]
     }
   },
   "include": ["src/**/*"]

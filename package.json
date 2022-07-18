@@ -5,10 +5,13 @@
   "author": "ThuanNgo",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --exec babel-node src/app.js"
+    "server": "nodemon --exec babel-node src/app.js",
+    "worker": "nodemon --exec babel-node src/worker.js",
+    "dev": "concurrently 'yarn server' 'yarn worker'"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bullmq": "^1.86.7",
     "celebrate": "^15.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -27,6 +30,7 @@
     "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.2",
     "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^7.2.2",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",

@@ -21,7 +21,9 @@
           "utils": "./src/utils",
           "services": "./src/services",
           "middlewares": "./src/middlewares",
-          "routes": "./src/routes"
+          "routes": "./src/routes",
+          "queues": "./src/queues",
+          "constants": "./src/constants"
         }
       }
     ]

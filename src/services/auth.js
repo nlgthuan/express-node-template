@@ -1,10 +1,13 @@
 import { isNull } from 'lodash';
 
 import { User } from 'models';
+import sendWelcomeEmailQueue from 'queues';
 import { AuthenticationError } from 'utils/errors';
 
 const signup = async (userDTO) => {
   const user = await User.create(userDTO);
+
+  sendWelcomeEmailQueue.add('Send Welcome Email', { receiver: user.email });
 
   return user;
 };
