@@ -16,6 +16,7 @@ app.use(
     stream: {
       write: (message) => logger.http(message),
     },
+    immediate: true,
   })
 );
 

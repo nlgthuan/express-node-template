@@ -6,23 +6,27 @@ import { ErrorWithStatusCode } from 'utils/errors';
 import logger from 'utils/logger';
 
 const errorHandler = (err, req, res, next) => {
-  logger.error(err.message);
-
   if (err instanceof ValidationError) {
+    logger.error(err.message);
+
     return res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
   }
 
   if (err instanceof ErrorWithStatusCode) {
+    logger.error(err.message);
+
     return res.status(err.statusCode).json({ error: err.message });
   }
 
   if (isCelebrateError(err)) {
     const { details } = err;
-    let message;
 
+    let message;
     details.forEach((joiError) => {
       message = joiError.details.map((x) => x.message).join('');
     });
+
+    logger.error(message);
 
     return res.status(StatusCodes.BAD_REQUEST).json({ error: message });
   }
