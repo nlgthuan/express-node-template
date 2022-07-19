@@ -13,18 +13,7 @@
     [
       "module-resolver",
       {
-        "root": ["."],
-        "alias": {
-          "src": "./src",
-          "config": "./src/config",
-          "models": "./src/models",
-          "utils": "./src/utils",
-          "services": "./src/services",
-          "middlewares": "./src/middlewares",
-          "routes": "./src/routes",
-          "queues": "./src/queues",
-          "constants": "./src/constants"
-        }
+        "root": ["./src"]
       }
     ]
   ]

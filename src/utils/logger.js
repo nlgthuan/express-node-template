@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-import config from 'src/config';
+import config from 'config';
 
 const colors = {
   error: 'red',

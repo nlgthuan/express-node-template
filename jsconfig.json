@@ -1,18 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonJS",
+    "module": "CommonJS",
     "target": "es6",
-    "baseUrl": ".",
-    "paths": {
-      "config/*": ["./src/config/*"],
-      "models/*": ["./src/models/*"],
-      "routes/*": ["./src/routes/*"],
-      "services/*": ["./src/services/*"],
-      "utils/*": ["./src/utils/*"],
-      "middlewares/*": ["./src/middlewares/*"],
-      "queues/*": ["./src/queues/*"],
-      "constants/*": ["./src/constants/*"]
-    }
+    "baseUrl": "./src"
   },
-  "include": ["src/**/*"]
+  "exclude": ["node_modules"]
 }

@@ -8,9 +8,14 @@ Basic node express template to scaffold a new project faster.
 
 _To be updated_
 
+## Change list
+
+### Jul 19th
+
+- [x] Update imports config
+
 ## TODO list 📝
 
-- [ ] Refactor imports config
 - [ ] Implement mailer
 - [ ] Refactor queues and workers
 - [ ] ...
